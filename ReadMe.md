@@ -3,7 +3,7 @@
 
 
 ### why
-- everyone want to conquer space world.
+- everyone wants to conquer space world.
 
 
 ### what
