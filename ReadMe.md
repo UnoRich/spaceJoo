@@ -42,8 +42,10 @@
 ### environment
 - Tizen with Z3 smartphone device
 - Unity 5.3.4p1 Personal
+
 - - -
-### Partner
-	이재호 : 졸병 발사 및 조각 알고리즘 개발.
-	배영준 : 운석 및 우주 시스템 개발.
-	정원영 : 목표모양과 조각된 운석 일치 판별 알고리즘 개발
+
+### Team
+	이재호 : 졸병 발사 및 조각 알고리즘 개발 / shooting algorithm
+	배영준 : 운석 및 우주 시스템 개발 / making world space object
+	정원영 : 목표모양과 조각된 운석 일치 판별 알고리즘 개발 / checking object's shape with goal algorithm
