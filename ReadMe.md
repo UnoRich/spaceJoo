@@ -16,12 +16,14 @@
 
 
 - everyone wants to conquer space world.
+
 - - -
 
 ### what
 -	우주 공간에 운석을 조각(파괴)하여 주어진 목표 모양으로 만든다음 제한시간 내에 다른 행성을 파괴시키는 게임이다.
 
 - we make cube object to specific shape
+
 - - - -
 
 ### how
