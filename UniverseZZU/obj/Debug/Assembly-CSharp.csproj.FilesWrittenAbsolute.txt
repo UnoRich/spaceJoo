@@ -1,0 +1,17 @@
+/Users/malgogi/UniverseZZU/Temp/bin/Debug/Assembly-CSharp.dll.mdb
+/Users/malgogi/UniverseZZU/Temp/bin/Debug/Assembly-CSharp.dll
+/Users/malgogi/UniverseZZU/obj/Debug/Assembly-CSharp.dll
+/Users/malgogi/UniverseZZU/obj/Debug/Assembly-CSharp.dll.mdb
+/Users/malgogi/UniverseZZU/Temp/bin/Debug/UnityEngine.dll
+/Users/malgogi/UniverseZZU/Temp/bin/Debug/UnityEditor.dll
+/Users/malgogi/UniverseZZU/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/malgogi/UniverseZZU/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/malgogi/UniverseZZU/Temp/bin/Debug/Mono.Cecil.dll
+/Users/malgogi/UniverseZZU/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/malgogi/UniverseZZU/Temp/bin/Debug/Unity.DataContract.dll
+/Users/malgogi/UniverseZZU/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/malgogi/UniverseZZU/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Users/malgogi/UniverseZZU/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Users/malgogi/UniverseZZU/Temp/bin/Debug/Unity.CecilTools.dll
+/Users/malgogi/UniverseZZU/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/malgogi/UniverseZZU/Temp/bin/Debug/Mono.Cecil.Mdb.dll
