@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
+	public GameObject shot;
+	public Transform firePosition;
+
 	private GameObject focusObj = null;
 	private float focusx;
 	private float focusy;
@@ -14,6 +17,7 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
 		if(Input.touchCount>0 && Input.GetTouch(0).phase==TouchPhase.Began)
 		{
 			focusObj = null;
@@ -39,9 +43,17 @@ public class PlayerController : MonoBehaviour {
 			focusObj.transform.Translate ( focusx, 0, 0);
 
 		}
+
+
 		if(focusObj && Input.touchCount >0 && Input.GetTouch(0).phase == TouchPhase.Ended)
 		{
 			focusObj=null;
 		}
+
+
+	}
+
+	public void shotMissle() {
+		Instantiate (shot, firePosition.position, firePosition.rotation);
 	}
 }

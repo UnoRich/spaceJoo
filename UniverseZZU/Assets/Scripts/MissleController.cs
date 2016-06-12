@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class MissleController : MonoBehaviour {
-	private float speed = 1.0f;
+	private float speed = 25.0f;
 	// Use this for initialization
 	void Start () {
 	
