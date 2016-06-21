@@ -1,13 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ButtonMissileShooterController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameController.cs">
     <Files>
-      <File FileName="Assets/Scripts/MissleController.cs" Line="15" Column="13" />
-      <File FileName="Assets/Scripts/PlayerController.cs" Line="46" Column="4" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="57" Column="20" />
       <File FileName="Assets/Scripts/ArcBallController.cs" Line="127" Column="67" />
       <File FileName="Assets/Scripts/SolidController.cs" Line="9" Column="3" />
       <File FileName="Assets/Scripts/StageController.cs" Line="15" Column="92" />
-      <File FileName="Assets/Scripts/ButtonMissileShooterController.cs" Line="11" Column="14" />
+      <File FileName="Assets/Scripts/ButtonMissileShooterController.cs" Line="16" Column="78" />
+      <File FileName="Assets/Scripts/GameController.cs" Line="29" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
