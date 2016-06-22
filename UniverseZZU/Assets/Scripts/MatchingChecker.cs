@@ -15,11 +15,9 @@ public class MatchingChecker : MonoBehaviour {
 			sb += temp;
 			if (GameObject.Find(sb) !=null) {
 				cubeArr[i-1] =1;
-				print("CubeArr " + i +" = " + "1");
 			}
 			else{
 				cubeArr[i-1] =0;
-				print ("not" + i);
 			}
 		}
 		for (int i = 1; i < 28; i++)
@@ -27,9 +25,9 @@ public class MatchingChecker : MonoBehaviour {
 			sb = "Solid ";
 			string temp = i.ToString();
 			sb += temp;
-			if (GameObject.Find(sb).activeSelf) {
+			if (GameObject.Find(sb) !=null) {
 				cubeArr2[i-1] =1;
-				print("CubeArr " + i +" = " + "1");
+				//print("CubeArr " + i +" = " + "1");
 			}
 			else{
 				cubeArr2[i-1] =0;
