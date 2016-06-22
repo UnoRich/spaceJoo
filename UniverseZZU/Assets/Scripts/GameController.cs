@@ -27,6 +27,8 @@ public class GameController : MonoBehaviour {
 			print ( cube.gameObject.name );
 		}
 
+		//solution을 rotate 시키면서 위치를 확인함.
+
 		return true;
 	}
 

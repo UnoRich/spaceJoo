@@ -2,36 +2,35 @@
 using System.Collections;
 
 public class LazorController : MonoBehaviour {
-	private LineRenderer lineRenderer;
-	private float counter;
-	private float dist;
-
 	public Transform origin;
-	public Transform destination;
+	LineRenderer lineRenderer;
 
-	public float lineDrawSpeed = 6f;
-	// Use this for initialization
-	void Start () {
-		lineRenderer = GetComponent<LineRenderer> ();
+	public float LineWidth; // use the same as you set in the line renderer.
+
+	void Start()
+	{
+		lineRenderer = GetComponent<LineRenderer>();
 		lineRenderer.SetPosition (0, origin.position);
 		lineRenderer.SetWidth (.1f, .1f);
-
-		dist = Vector3.Distance (origin.position, destination.position);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (counter < dist) {
-			counter += .1f;
-
-			float x = Mathf.Lerp (0, dist, counter);
-
-			Vector3 pointA = origin.position;
-			Vector3 pointB = destination.position;
-
-			Vector3 pointAlongLine = x * Vector3.Normalize (pointB - pointA) + pointA;
-
-			lineRenderer.SetPosition (1, pointAlongLine);
+		RaycastHit[] hitObjs;
+		Vector3 newPos = new Vector3( 0, 100, 0 );
+		//Ray ray = new Ray (origin.position, new Vector3 (0, 1, 0));
+		hitObjs = Physics.RaycastAll ( origin.position, new Vector3( 0, 1, 0 ), Mathf.Infinity );
+		if ( hitObjs != null ) {
+			foreach( RaycastHit hitObj in hitObjs ) {
+				if (hitObj.transform.gameObject.tag == "Cube") {
+					newPos = hitObj.point;
+					break;
+				}
+			}
 		}
+
+		lineRenderer.SetPosition (1, newPos );
 	}
+
+
 }
