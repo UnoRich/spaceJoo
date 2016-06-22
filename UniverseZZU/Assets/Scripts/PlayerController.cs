@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	public void shotMissle() {
+		print ("shot");
 		Instantiate (shot, firePosition.position, firePosition.rotation);
 	}
 
