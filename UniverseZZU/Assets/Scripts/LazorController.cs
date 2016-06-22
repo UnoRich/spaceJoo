@@ -11,7 +11,7 @@ public class LazorController : MonoBehaviour {
 	{
 		lineRenderer = GetComponent<LineRenderer>();
 		lineRenderer.SetPosition (0, origin.position);
-		lineRenderer.SetWidth (.1f, .1f);
+		lineRenderer.SetWidth (.05f, .05f);
 	}
 	
 	// Update is called once per frame
@@ -29,7 +29,8 @@ public class LazorController : MonoBehaviour {
 			}
 		}
 
-		lineRenderer.SetPosition (1, newPos );
+		lineRenderer.SetPosition ( 0, origin.position );
+		lineRenderer.SetPosition ( 1, newPos );
 	}
 
 
