@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour {
 		}
 
 		Transform[] stage = GameObject.Find ("Stage").GetComponentsInChildren<Transform> ();
-		foreach( Transform cube in solution ) {
+		foreach( Transform cube in stage ) {
 			print ( cube.gameObject.name );
 		}
 

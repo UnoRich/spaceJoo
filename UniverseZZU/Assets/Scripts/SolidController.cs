@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class SolidController : MonoBehaviour {
-	private float speed = 0.5f;
+	//private float speed = 0.5f;
 	// Use this for initialization
 	void Start () {
 	
