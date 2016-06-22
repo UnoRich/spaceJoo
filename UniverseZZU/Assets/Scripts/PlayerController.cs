@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 	public GameObject shot;
@@ -55,5 +56,10 @@ public class PlayerController : MonoBehaviour {
 
 	public void shotMissle() {
 		Instantiate (shot, firePosition.position, firePosition.rotation);
+	}
+
+
+	public void StageReset() {
+		SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
 	}
 }

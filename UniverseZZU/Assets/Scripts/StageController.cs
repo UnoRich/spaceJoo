@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class StageController : MonoBehaviour {
 	public Transform bulletPrefab;
@@ -19,4 +20,9 @@ public class StageController : MonoBehaviour {
 	void Update () {
 	
 	}
+
+	void StageReset() {
+		SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
+	}
+
 }

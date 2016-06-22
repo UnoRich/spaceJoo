@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 	
@@ -44,6 +45,10 @@ public class GameController : MonoBehaviour {
 		GameObject.Find ( "ButtonBack" ).SetActive (false);
 		GameObject.Find ( "Canvas" ).transform.FindChild( "ButtonSolution" ).gameObject.SetActive ( true );
 		GameObject.Find ( "Canvas" ).transform.FindChild( "ButtonShot" ).gameObject.SetActive (true);
+	}
+
+	public void StageReset() {
+		SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
 	}
 
 }
