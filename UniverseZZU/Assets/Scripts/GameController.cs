@@ -16,21 +16,74 @@ public class GameController : MonoBehaviour {
 	}
 
 	//solution과 스텝을 체크하는 method
-	bool MatchCheck() {
+	public void MatchCheck() {
 		//solution
-		Transform[] solution = GameObject.Find ("SolutionWrapper").transform.FindChild ("Solution").GetComponentsInChildren<Transform>();
-		foreach( Transform cube in solution ) {
-			print ( cube.gameObject.name );
+		Transform solutionParent = GameObject.Find ("SolutionWrapper").transform.FindChild ("Solution").FindChild("SolutionComponent");
+		Transform[] solution = GameObject.Find ("SolutionWrapper").transform.FindChild ("Solution").FindChild("SolutionComponent").GetComponentsInChildren<Transform>();
+
+		//stage
+		Transform stageParent = GameObject.Find ("Stage").GetComponent<Transform> ();
+		Transform[] stage = GameObject.Find ("Stage").GetComponentsInChildren<Transform> ();
+
+		stageParent.rotation = new Quaternion (0, 0, 0, 0);
+		solutionParent.rotation = new Quaternion (0, 0, 0, 0);
+
+		bool result = true;
+
+		if ( solution.Length != stage.Length  ) {
+			return ;
 		}
 
-		Transform[] stage = GameObject.Find ("Stage").GetComponentsInChildren<Transform> ();
-		foreach( Transform cube in stage ) {
-			print ( cube.gameObject.name );
+		for (int rX = 0 ; rX < 4 ; rX++) {
+			for (int rY = 0; rY < 4; rY++) {
+				result = true;
+
+				foreach (Transform solCube in solution) {
+					//remove self
+					if (solCube.tag != "Cube") {
+						continue;
+					}
+					bool find = false;
+
+					foreach (Transform stgCube in stage) {
+						//remove self
+						if (stgCube.tag != "Cube") {
+							continue;
+						}
+
+						Vector3 x1 = solutionParent.TransformPoint( solCube.localPosition ) - solutionParent.position;
+						Vector3 x2 = stageParent.TransformPoint( stgCube.localPosition ) - stageParent.position;
+						if (x1.x == x2.x &&
+							x1.y == x2.y &&
+							x1.z == x2.z) {
+
+							find = true;
+							break;
+						}
+					}
+
+					if (!find) {
+						result = false;
+						break;
+					}
+				}
+
+				if ( result ) {
+					break;
+				}
+
+				stageParent.Rotate ( new Vector3 (0, 90.0f, 0));
+			}
+
+			if ( result ) {
+				break;
+			}
+
+			stageParent.Rotate ( new Vector3 ( 90.0f, 0, 0 ) );
 		}
 
 		//solution을 rotate 시키면서 위치를 확인함.
-
-		return true;
+		print( "check: " + result.ToString() );
 	}
 
 	//solution을 보여주는 함수
