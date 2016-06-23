@@ -2,9 +2,11 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Text.RegularExpressions;
 public class GameController : MonoBehaviour {
 	public Text textSuccess;
-
+	private static float delayTime = 2.0f;
+	private static float textDelayTime = 1.5f;
 	// Use this for initialization
 	void Start () {
 		GameObject.Find ( "Solution" ).SetActive ( false );
@@ -20,6 +22,7 @@ public class GameController : MonoBehaviour {
 
 	//solution과 스텝을 체크하는 method
 	public void MatchCheck() {
+		
 		//solution
 		Transform solutionParent = GameObject.Find ("SolutionWrapper").transform.FindChild ("Solution").FindChild("SolutionComponent");
 		Transform[] solution = GameObject.Find ("SolutionWrapper").transform.FindChild ("Solution").FindChild("SolutionComponent").GetComponentsInChildren<Transform>();
@@ -34,7 +37,9 @@ public class GameController : MonoBehaviour {
 		bool result = true;
 
 		if ( solution.Length != stage.Length  ) {
-			textSuccess.text = "Fail.\n Try again.!!";
+			textSuccess.text = "Fail.\n Try again.";
+			Invoke( "ClearText", textDelayTime );
+
 			return ;
 		}
 
@@ -94,20 +99,19 @@ public class GameController : MonoBehaviour {
 
 			stageParent.Rotate ( new Vector3 (0, 0, 90) );
 		}
-
-
-		//solution을 rotate 시키면서 위치를 확인함.
-		print( "check: " + result.ToString() );
+			
 		if (result) {
-			textSuccess.text = "Success!!";
+			textSuccess.text = "Success!";
+			Invoke( "ClearText", textDelayTime );
+			StartCoroutine ( "MoveNextScene" );
 		} else {
 			textSuccess.text = "Fail.\n Try again.";
+			Invoke( "ClearText", textDelayTime );
 		}
 	}
 
 	//solution을 보여주는 함수
 	public void ShowSolution() {
-		MatchCheck ();
 		GameObject.Find ( "SolutionWrapper" ).transform.FindChild( "Solution" ).gameObject.SetActive ( true );
 		GameObject.Find ( "Canvas" ).transform.FindChild( "ButtonBack" ).gameObject.SetActive ( true );
 		GameObject.Find ( "Canvas" ).transform.FindChild( "ButtonSolution" ).gameObject.SetActive (false);
@@ -123,6 +127,20 @@ public class GameController : MonoBehaviour {
 
 	public void StageReset() {
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
+	}
+
+	private IEnumerator MoveNextScene()
+	{
+		yield return new WaitForSeconds( delayTime );
+
+		int next = int.Parse( Regex.Replace( SceneManager.GetActiveScene ().name, "[^0-9]", "") );
+		next++;
+		SceneManager.LoadScene( "Stage" + next, LoadSceneMode.Single );
+	}
+
+	private void ClearText( )
+	{
+		textSuccess.text = "";
 	}
 
 }
