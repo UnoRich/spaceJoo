@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class GameController : MonoBehaviour {
-	
+	public Text textSuccess;
+
 	// Use this for initialization
 	void Start () {
 		GameObject.Find ( "Solution" ).SetActive ( false );
 		GameObject.Find ( "ButtonBack" ).SetActive ( false );
+
+		textSuccess.text = "";
 	}
 	
 	// Update is called once per frame
@@ -31,59 +34,75 @@ public class GameController : MonoBehaviour {
 		bool result = true;
 
 		if ( solution.Length != stage.Length  ) {
+			textSuccess.text = "Fail.\n Try again.!!";
 			return ;
 		}
 
-		for (int rX = 0 ; rX < 4 ; rX++) {
-			for (int rY = 0; rY < 4; rY++) {
-				result = true;
+		for (int rZ = 0; rZ < 4; rZ++) {
+			for (int rX = 0 ; rX < 4 ; rX++) {
+				for (int rY = 0; rY < 4; rY++) {
+					result = true;
 
-				foreach (Transform solCube in solution) {
-					//remove self
-					if (solCube.tag != "Cube") {
-						continue;
-					}
-					bool find = false;
-
-					foreach (Transform stgCube in stage) {
+					foreach (Transform solCube in solution) {
 						//remove self
-						if (stgCube.tag != "Cube") {
+						if (solCube.tag != "Cube") {
 							continue;
 						}
+						bool find = false;
 
-						Vector3 x1 = solutionParent.TransformPoint( solCube.localPosition ) - solutionParent.position;
-						Vector3 x2 = stageParent.TransformPoint( stgCube.localPosition ) - stageParent.position;
-						if (x1.x == x2.x &&
-							x1.y == x2.y &&
-							x1.z == x2.z) {
+						foreach (Transform stgCube in stage) {
+							//remove self
+							if (stgCube.tag != "Cube") {
+								continue;
+							}
 
-							find = true;
+							Vector3 x1 = solutionParent.TransformPoint( solCube.localPosition ) - solutionParent.position;
+							Vector3 x2 = stageParent.TransformPoint( stgCube.localPosition ) - stageParent.position;
+							if (
+								Mathf.Abs( x1.x - x2.x ) <= .5f &&
+								Mathf.Abs( x1.y - x2.y ) <= .5f &&
+								Mathf.Abs( x1.z - x2.z ) <= .5f ) {
+
+								find = true;
+								break;
+							}
+						}
+
+						if (!find) {
+							result = false;
 							break;
 						}
 					}
 
-					if (!find) {
-						result = false;
+					if ( result ) {
 						break;
 					}
+
+					stageParent.Rotate ( new Vector3 (0, 90, 0));
 				}
 
 				if ( result ) {
 					break;
 				}
+				stageParent.Rotate ( new Vector3 (90, 0, 0) );
 
-				stageParent.Rotate ( new Vector3 (0, 90.0f, 0));
 			}
 
 			if ( result ) {
 				break;
 			}
 
-			stageParent.Rotate ( new Vector3 ( 90.0f, 0, 0 ) );
+			stageParent.Rotate ( new Vector3 (0, 0, 90) );
 		}
+
 
 		//solution을 rotate 시키면서 위치를 확인함.
 		print( "check: " + result.ToString() );
+		if (result) {
+			textSuccess.text = "Success!!";
+		} else {
+			textSuccess.text = "Fail.\n Try again.";
+		}
 	}
 
 	//solution을 보여주는 함수
